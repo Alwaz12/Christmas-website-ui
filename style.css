@@ -1,0 +1,1325 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /* Colors */
+  --primary-color: #114779;
+  --secondary-color: #6bc2ed;
+  --brown-color: #422a08;
+  --box-color: #eff7ff;
+  --red-color: #9e0a16;
+  --gradient-color: radial-gradient(circle, #c2e1f6 0%, #6bc2ed 45%, #3477ac 100%);
+  --box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --text-color: #a3a3a3;
+  --white-color: #fcfcfa;
+  --black-color: #000000;
+
+  /* Font Families */
+  --font-family-main: "Great Vibes", cursive;
+  --font-family-secondary: "Playfair Display", serif;
+  --font-family-paragraph: "Poppins", sans-serif;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-paragraph);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* Keeps the hover effect contained */
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  z-index: -1; /* Place the background behind the text */
+  transition: width 0.4s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+
+/*=============== HEADER ===============*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 50px;
+  background: var(--secondary-color);
+}
+
+.header__logo img{
+  width: 200px;
+  cursor: pointer;
+}
+
+.navbar{
+  display: flex;
+  gap: 20px;
+}
+
+.navbar__item{
+  position: relative;
+  font-size: 16px;
+  color: var(--white-color);
+  font-weight: 500;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.navbar__item::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: var(--white-color);
+  transition: all 0.3s ease;
+}
+
+.navbar__item:hover::after{
+  width: 100%;
+}
+
+.navbar__link{
+  color: var(--white-color);
+}
+
+.navbar__link:hover{
+  color: var(--primary-color);
+}
+
+.social-icons{
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--white-color);
+  border-radius: 50%;
+  transition: background-color 0.3s
+}
+
+.social-icon:hover{
+  background: var(--primary-color);
+}
+
+.social-icon i{
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
+#menu-icon{
+  font-size: 30px;
+  height: 45px;
+  width: 45px;
+  color: var(--white-color);
+  cursor: pointer;
+  display: none;
+}
+
+/*=============== HEADER RESPONSIVE ===============*/
+
+@media (max-width: 768px){
+  .header{
+    padding: :10px 20px;
+  }
+
+  .header__logo img{
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+    /* Social Icons */
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+
+  #menu-icon{
+    display: inline-flex;
+  }
+
+  .navbar{
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    align-items: center;
+    background: var(--secondary-color);
+    width: 100%;
+    height: 100vh;
+    padding-top: 100px;
+    transition: right 0.5s ease;
+    z-index: 9999;
+  }
+
+  .navbar.open{
+    right: 0;
+  }
+}
+
+/*=============== HERO===============*/
+
+.hero{
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  background-size: cover;
+  background: var(--gradient-color);
+  text-align: center;
+}
+
+.hero__content{
+  position: absolute;
+  padding: 0 20px;
+  z-index: 2;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero__description{
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 10px 0 20px 0;
+  color: var(--black-color);
+}
+
+.hero__images{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-size: cover;
+}
+
+.hero-1{
+  background: url(images/hero1.png) no-repeat center center/cover;
+}
+
+.hero-2{
+  background: url(images/hero2.png) no-repeat center center/cover;
+}
+
+.hero-3{
+  background: url(images/hero3.png) no-repeat center center/cover;
+}
+
+.hero-4{
+  background: url(images/hero4.png) no-repeat center center/cover;
+}
+
+.hero-5{
+  background: url(images/hero5.png) no-repeat center center/cover;
+}
+
+.hero-6{
+  background: url(images/hero6.png) no-repeat center center/cover;
+}
+
+.hero-7{
+  background: url(images/hero7.png) no-repeat center center/cover;
+}
+
+.hero-8{
+  background: url(images/hero8.png) no-repeat center center/cover;
+}
+
+/*=============== HERO RESPONSIVE ===============*/
+
+
+@media (max-width: 1024px) {
+   
+  .hero {
+    height: 70vh;
+    text-align: center;
+  }
+
+  .hero__content {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  .snow {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+    height: 90vh;
+  }
+
+  .hero__content {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .hero__description {
+    font-size: 0.9rem;
+  }
+
+  .hero-1{
+    background: url(mobile/hero1.png) no-repeat center center/cover;
+  }
+
+  .hero-2{
+    background: url(mobile/hero2.png) no-repeat center center/cover;
+  }
+
+  .hero-3{
+    background: url(mobile/hero3.png) no-repeat center center/cover;
+  }
+
+  .hero-4{
+    background: url(mobile/hero4.png) no-repeat center center/cover;
+  }
+
+  .hero-5{
+    background: url(mobile/hero5.png) no-repeat center center/cover;
+  }
+
+  .hero-6{
+    background: url(mobile/hero6.png) no-repeat center center/cover;
+  }
+
+  .hero-7{
+    background: url(mobile/hero7.png) no-repeat center center/cover;
+  }
+
+  .hero-8{
+    background: url(mobile/hero8.png) no-repeat center center/cover;
+  }
+
+  .snow {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .hero {
+    height: 50vh;
+  }
+
+  .hero__content {
+    font-size: 0.8rem;
+  }
+
+  .hero__description {
+    font-size: 0.8rem;
+  }
+ 
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+ 
+  .snow {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/*=============== SNOW FALL ===============*/
+
+.falling-snowflakes{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.snow{
+  position: absolute;
+  top: -10%;
+  width: 80px;
+  height: 80px;
+  animation: fall linear infinite;
+  transform-origin: top center;
+  opacity: 0 8;
+}
+
+.snowflake1{
+  background: url(images/snow1.png) no-repeat center/contain;
+  animation-duration: 8s;
+  animation-delay: 0s;
+  left: 10%;
+}
+
+.snowflake2{
+  background: url(images/snow2.png) no-repeat center/contain;
+  animation-duration: 10s;
+  animation-delay: 2s;
+  left: 20%;
+}
+
+.snowflake3{
+  background: url(images/snow3.png) no-repeat center/contain;
+  animation-duration: 12s;
+  animation-delay: 4s;
+  left: 30%;
+}
+
+.snowflake4{
+  background: url(images/snow4.png) no-repeat center/contain;
+  animation-duration: 9s;
+  animation-delay: 1s;
+  left: 40%;
+}
+
+.snowflake5{
+  background: url(images/snow5.png) no-repeat center/contain;
+  animation-duration: 7s;
+  animation-delay: 3s;
+  left: 50%;
+}
+
+.snowflake6{
+  background: url(images/snow6.png) no-repeat center/contain;
+  animation-duration: 11s;
+  animation-delay: 3s;
+  left: 60%;
+}
+
+.snowflake7{
+  background: url(images/snow7.png) no-repeat center/contain;
+  animation-duration: 10s;
+  animation-delay: 5s;
+  left: 70%;
+}
+
+.snowflake8{
+  background: url(images/snow8.png) no-repeat center/contain;
+  animation-duration: 9s;
+  animation-delay: 2s;
+  left: 80%;
+}
+
+@keyframes fall {
+  0%{
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100%{
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+/*=============== TIMER ===============*/
+
+.countdown{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  background: var(--gradient-color);
+  height: 90vh;
+}
+
+.countdown-content{
+  text-align: right;
+  margin-right: 20px;
+}
+
+.countdown__title{
+  position: absolute;
+  top: 40%;
+  right: 25%;
+  text-align: center;
+  font-family: var(--font-family-main);
+  color: var(--primary-color);
+  font-size: 3.5rem;
+}
+
+.countdown__description{
+  font-size: 1.2rem;
+  position: absolute;
+  top: 53%;
+  right: 25%;
+  color: var(--white-color);
+}
+
+.countdown__timer{
+  text-align: center;
+  margin: 20% 22% 0 0;
+  color: var(--primary-color);
+}
+
+.timer{
+  display: flex;
+  gap: 20px;
+}
+
+.timer-box{
+  background: var(--box-color);
+  border-radius: 8px;
+  padding: 10px 20px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  width: 90px;
+}
+
+.timer-box span{
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.timer-box p{
+  margin: 0;
+  font-size: 1rem;
+  color: var(--black-color);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.countdown__images{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.countdown__image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-size: cover;
+}
+
+.count-1{
+  background: url(images/count1.png) no-repeat center center/cover;
+}
+
+.count-2{
+  background: url(images/count2.png) no-repeat center center/cover;
+}
+
+.count-3{
+  background: url(images/count3.png) no-repeat center center/cover;
+}
+
+.count-4{
+  background: url(images/count4.png) no-repeat center center/cover;
+}
+
+.count-5{
+  background: url(images/count5.png) no-repeat center center/cover;
+  background-size: cover;
+}
+
+/*=============== TIMER RESPONSIVE ===============*/
+
+@media (max-width: 1024px) {
+  .countdown {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+  }
+
+  .countdown-content {
+    margin-right: 0;
+  }
+
+  .countdown__title {
+    top: 30%;
+    right: auto;
+    font-size: 2.8rem;
+  }
+
+  .countdown__description {
+    top: 45%;
+    right: auto;
+    font-size: 1rem;
+  }
+
+  .countdown__timer {
+    margin: 10% auto 0;
+  }
+
+  .timer-box {
+    width: 70px;
+    padding: 8px 15px;
+  }
+
+  .timer-box span {
+    font-size: 1.8rem;
+  }
+
+  .timer-box p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .countdown {
+    height: auto;
+    padding: 20px;
+  }
+
+  .countdown__title {
+    font-size: 2.5rem;
+    position: relative;
+  }
+
+  .countdown__description {
+    font-size: 0.9rem;
+    position: relative;
+    margin-bottom: -40px;
+  }
+
+  .timer-box {
+    width: 60px;
+    padding: 5px 10px;
+    margin-bottom: 40px;
+  }
+
+  .timer-box span {
+    font-size: 1.5rem;
+  }
+
+  .timer-box p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .countdown__title {
+    font-size: 2rem;
+    top: auto;
+    margin-bottom: 10px;
+  }
+
+  .countdown__description {
+    font-size: 0.8rem;
+    top: auto;
+    margin-bottom: 20px;
+  }
+
+  .countdown__timer {
+    margin: 20px 0;
+  }
+
+  .timer {
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .timer-box {
+    width: 50px;
+    padding: 5px;
+  }
+
+  .timer-box span {
+    font-size: 1.2rem;
+  }
+
+  .timer-box p {
+    font-size: 0.7rem;
+  }
+}
+
+/*=============== ABOUT ===============*/
+
+.about-christmas {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 5%;
+  gap: 20px;
+  background: url('images/bg4.png') no-repeat center center/cover;
+  flex-wrap: wrap;
+}
+
+/* Content Section */
+.about-christmas__content {
+  max-width: 500px;
+  font-family: var(--font-family-secondary);
+  color: #2c3e50;
+  z-index: 2;
+}
+
+.about-christmas__title {
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.about-christmas__description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--brown-color);
+  margin-bottom: 20px;
+}
+
+.about-btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.about-btn:hover {
+  background: var(--secondary-color);
+}
+
+.about-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.about-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.about-icon:hover {
+  background-color: var(--secondary-color);
+}
+
+.about-icon i {
+  color: var(--white-color);
+}
+
+/* Right Image */
+.right-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
+/*=============== ABOUT RESPONSIVE ===============*/
+
+@media (max-width: 768px) {
+  .about-christmas {
+    padding: 30px 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-christmas__content {
+    text-align: center;
+  }
+
+  .about-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .about-icons {
+    justify-content: center;
+  }
+
+  .right-image {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .right-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* For screens less than 480px */
+@media (max-width: 480px) {
+  .about-christmas__title {
+    font-size: 2.5rem;
+  }
+
+  .about-christmas__description {
+    font-size: 0.9rem;
+  }
+
+  .about-btn {
+    padding: 12px 20px;
+  }
+
+  .about-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*=============== DECORATION ===============*/
+
+
+.christmas-decoration{
+  padding: 70px 20px;
+  background: url(images/bg1.png);
+  background-repeat: no-repeat;
+}
+
+.container{
+  text-align: center;
+  padding: 15px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.decoration__title{
+  font-family: var(--font-family-secondary);
+  font-size: 3rem;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.decoration__description{
+  font-size: 1.2rem;
+  color: var(--black-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.decoration__cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.card-link{
+  color: inherit;
+  display: block;
+  width: 300px;
+  height: 300px;
+  max-width: 100%;
+  transition: transform 0.3s;
+  margin-top: 100px;
+}
+
+.card{
+  background: var(--white-color);
+  padding: 20px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+  margin-top: 200px;
+}
+
+.card:hover{
+  transform: scale(1.05);
+}
+
+.card-icon{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.card-title{
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.card-description{
+  font-size: 0.8rem;
+  color: var(--brown-color);
+  margin-top: 10px;
+}
+
+/*=============== DECORATION RESPONSIVE ===============*/
+
+@media (max-width: 768px) {
+  .decoration__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-link {
+    width: 90%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .decoration__title {
+    font-size: 2.5rem;
+  }
+
+  .decoration__description {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
+
+  .card-decoration {
+    font-size: 0.9rem;
+  }
+}
+
+/*=============== FESTIVE ===============*/
+
+.festive-gallery{
+  text-align: center;
+  padding: 100px 20px;
+  background: url(images/bg3.png);
+}
+
+.festive-gallery__title{
+  font-family: var(--font-family-secondary);
+  font-size: 2.5rem;
+  color: var(--red-color);
+  margin-bottom: 10px;
+}
+
+.festive-gallery__description{
+  font-size: 1rem;
+  color: var(--brown-color);
+  margin-bottom: 70px;
+}
+
+.festive-gallery__images{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.festive-image{
+  position: relative;
+  background-color: var(--white-color);
+  border: 10px solid var(--white-color);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.festive-image img{
+  display: block;
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.festive-image-1{
+  transform: rotate(40deg);
+}
+
+.festive-image-2{
+  transform: rotate(5deg);
+}
+
+.festive-image-3{
+  transform: rotate(-30deg);
+}
+
+.festive-image:hover{
+  transform: scale(1.05);
+}
+
+/*=============== FESTIVE RESPONSIVE ===============*/
+
+@media (max-width: 768px) {
+  .festive-image{
+    transform: rotate(0deg);
+  }
+  .fastive-image img {
+    width: 150px;
+    height: 200px;
+  }
+}
+
+/*=============== WHY CHOOSE ===============*/
+
+
+.why-section{
+  padding: 70px 50px;
+  background: url(images/bg2.png);
+}
+
+.why-title{
+  font-size: 3.5rem;
+  margin-bottom: 80px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-family-secondary);
+  color: var(--primary-color);
+}
+
+.content-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.text-box{
+  width: 30%;
+  min-width: 300px;
+  text-align: left;
+}
+
+.subtitle{
+  font-size: 1.8rem;
+  color: var(--black-color);
+  margin-bottom: 15px;
+}
+
+.content{
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--brown-color);
+}
+
+.center-image img {
+  width: 300px; /* Image fixed width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/*=============== WHY CHOOSE RESPONSIVE ===============*/
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 50px 20px;
+  }
+
+  .why-title {
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
+
+/* For mobile screens (less than 480px) */
+@media (max-width: 480px) {
+  .why-section {
+    padding: 40px 10px;
+  }
+
+  .why-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .content-container {
+    flex-direction: column;
+  }
+
+  .text-box {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    font-size: 0.8rem;
+  }
+
+  .center-image img {
+    width: 100%;
+  }
+}
+
+/*=============== FOOTER ===============*/
+
+ footer {
+  background: url(images/bg5.png);
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+}
+
+.footer-section h4 {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.footer-section p, 
+.footer-section a {
+  font-size: 14px;
+  color: var(--black-color);
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-icons{
+  display: flex;
+  gap: 15px;
+  margin-top: 9%;
+}
+
+.footer-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.footer-icon:hover{
+  background-color: var(--red-color);
+}
+
+.footer-icon i{
+  color: var(--white-color);
+}
+
+.newsletter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.newsletter input {
+  padding: 10px;
+  border: 1px solid var(--black-color);
+  border-radius: 3px;
+  outline: none;
+  flex: 1;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background-color: var(--red-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin: 30px;
+  font-size: 12px;
+  color: var(--black-color);
+}
+
+/*=============== FOOTER RESPONSIVE ===============*/
+
+@media (max-width: 768px) {
+  footer {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-icons {
+    justify-content: center;
+  }
+
+  .newsletter {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* For mobile screens (less than 480px) */
+@media (max-width: 480px) {
+  .footer-section h4 {
+    font-size: 16px;
+  }
+
+  .footer-section p, 
+  .footer-section a {
+    font-size: 12px;
+  }
+
+  .footer-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .newsletter input {
+    padding: 8px;
+  }
+
+  .newsletter button {
+    padding: 10px;
+  }
+
+  .footer-bottom {
+    font-size: 10px;
+  }
+}
